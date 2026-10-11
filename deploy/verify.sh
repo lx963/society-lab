@@ -2,6 +2,10 @@ set -eu
 systemctl is-active --quiet society-lab
 systemctl is-enabled --quiet society-lab
 runuser -u society-lab -- env HOME=/var/lib/society-lab /opt/society-lab/.venv/bin/python - <<'PY'
+import os
+# Upstream validates model variables at import time. These process-only values
+# allow an import smoke check without saving credentials or calling a model.
+os.environ.update(AGENTSOCIETY_LLM_API_KEY='import-check-only', AGENTSOCIETY_LLM_API_BASE='http://127.0.0.1:9/v1', AGENTSOCIETY_LLM_MODEL='import-check-only')
 from agentsociety2.config.llm_dispatcher import LLMClient
 from agentsociety2.contrib.env.prisoners_dilemma import PrisonersDilemmaEnv
 from agentsociety2.contrib.env.public_goods import PublicGoodsEnv

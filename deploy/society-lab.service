@@ -1,5 +1,5 @@
 [Unit]
-Description=Society Lab public showcase API
+Description=Society Lab experiment API
 After=network-online.target
 Wants=network-online.target
 
@@ -7,7 +7,13 @@ Wants=network-online.target
 User=society-lab
 Group=society-lab
 WorkingDirectory=/opt/society-lab
-Environment=SOCIETY_LAB_READ_ONLY=1
+Environment=SOCIETY_LAB_READ_ONLY=0
+Environment=SOCIETY_LAB_INCLUDE_ARCHIVE=1
+Environment=SOCIETY_LAB_ENV_FILE=/var/lib/society-lab/.env
+Environment=SOCIETY_LAB_RUNS_DIR=/var/lib/society-lab/runs
+Environment=HOME=/var/lib/society-lab
+StateDirectory=society-lab
+StateDirectoryMode=0700
 Environment=PYTHONDONTWRITEBYTECODE=1
 ExecStart=/opt/society-lab/.venv/bin/uvicorn backend.app:app --host 127.0.0.1 --port 8012 --proxy-headers --forwarded-allow-ips=127.0.0.1
 Restart=on-failure

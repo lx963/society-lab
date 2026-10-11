@@ -15,7 +15,7 @@ export UV_PYTHON_INSTALL_DIR=/opt/society-lab-tools/python
 if [ ! -x .venv/bin/python ] || ! readlink -f .venv/bin/python | grep -q '^/opt/society-lab-tools/python/'; then
     /opt/society-lab-tools/uv venv --python 3.12 --clear .venv
 fi
-/opt/society-lab-tools/uv pip install --python .venv/bin/python -r deploy/requirements-showcase.txt
+/opt/society-lab-tools/uv sync --frozen --no-dev --python 3.12
 cd frontend
 npm ci --no-audit --no-fund
 npm run build
@@ -28,7 +28,7 @@ for attempt in $(seq 1 15); do
     if curl -fsS http://127.0.0.1:8012/api/config; then break; fi
     sleep 1
 done
-curl -fsS http://127.0.0.1:8012/api/runs | python3 -c 'import json,sys; r=json.load(sys.stdin); assert len(r)==18; print("Showcase records:",len(r))'
+curl -fsS http://127.0.0.1:8012/api/runs | python3 -c 'import json,sys; r=json.load(sys.stdin); assert len(r)>=18; print("Available records:",len(r))'
 mkdir -p /etc/caddy/sites
 install -m 644 deploy/Caddyfile /etc/caddy/sites/society-lab.caddy
 if ! grep -qxF 'import /etc/caddy/sites/*.caddy' /etc/caddy/Caddyfile; then

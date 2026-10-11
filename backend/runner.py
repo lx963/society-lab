@@ -9,12 +9,13 @@ from uuid import uuid4
 from dotenv import dotenv_values
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNS = ROOT / "data" / "runs"
+RUNS = Path(os.getenv("SOCIETY_LAB_RUNS_DIR", str(ROOT / "data" / "runs")))
+ENV_FILE = Path(os.getenv("SOCIETY_LAB_ENV_FILE", str(ROOT / ".env")))
 ENV_NAMES = ("AGENTSOCIETY_LLM_API_KEY", "AGENTSOCIETY_LLM_API_BASE", "AGENTSOCIETY_LLM_MODEL")
 
 
 def llm_config() -> dict[str, str]:
-    file_values = dotenv_values(ROOT / ".env") if (ROOT / ".env").exists() else {}
+    file_values = dotenv_values(ENV_FILE) if ENV_FILE.exists() else {}
     values = {name: str((file_values[name] if name in file_values else os.getenv(name)) or "").strip() for name in ENV_NAMES}
     missing = [name for name, value in values.items() if not value]
     if missing:

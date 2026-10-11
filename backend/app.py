@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 ROOT = Path(__file__).resolve().parents[1]
-ENV_FILE = ROOT / ".env"
+ENV_FILE = Path(os.getenv("SOCIETY_LAB_ENV_FILE", str(ROOT / ".env")))
 load_dotenv(ENV_FILE)
 from .runner import ENV_NAMES, RUNS, execute, llm_config  # noqa: E402
 
@@ -28,7 +28,13 @@ def require_writable():
 
 
 def run_directories():
-    return [RUNS, ROOT / "examples" / "offline"] if read_only() else [RUNS]
+    directories = [RUNS]
+    bundled = ROOT / "data" / "runs"
+    if RUNS != bundled:
+        directories.append(bundled)
+    if read_only() or os.getenv("SOCIETY_LAB_INCLUDE_ARCHIVE") == "1":
+        directories.append(ROOT / "examples" / "offline")
+    return directories
 
 
 class Agent(BaseModel):

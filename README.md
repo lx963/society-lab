@@ -17,7 +17,7 @@
 
 ## 启动
 
-公开只读展示站：[society-lab.wei67.top](https://society-lab.wei67.top)。展示站可查看全部 18 个成功实例，模型配置与新建实验已关闭。部署方式见 [VPS 部署说明](deploy/README.md)。下面的启动方式保留本地完整交互功能。
+完整部署站：[society-lab.wei67.top](https://society-lab.wei67.top)。可查看全部 18 个成功实例，并直接配置模型和新建实验，无需管理员登录。模型初始配置为空。部署方式见 [VPS 部署说明](deploy/README.md)。
 
 需要 Python 3.12、uv、Node.js 20.19+。
 

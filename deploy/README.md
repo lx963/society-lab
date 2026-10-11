@@ -1,23 +1,25 @@
-# VPS 只读展示部署
+# VPS 完整部署
 
 线上地址：https://society-lab.wei67.top
 
-通过用户提供的 `.vps_exec.py` SSH 辅助脚本执行部署：
-
 ```powershell
 python deploy/vps_exec.py "F:\Codex_Project\vps迁移\.vps_exec.py" deploy/bootstrap.sh
+python deploy/vps_exec.py "F:\Codex_Project\vps迁移\.vps_exec.py" deploy/verify.sh
 ```
 
-部署脚本从 GitHub main 获取代码，安装独立 Python 3.12 环境和展示所需 API 依赖，使用服务器已有 Node.js 构建前端。它安装 `society-lab.service` 并向已有 Caddy 配置添加独立站点文件，自动申请 HTTPS 证书。首次更改 Caddy 主配置前会保留备份。
+脚本拉取 GitHub main，通过 `uv sync --frozen --no-dev` 安装全部 Python 依赖，使用服务器 Node.js 构建前端，安装 systemd 服务，复用已有 Caddy 提供 HTTPS、静态文件和 API 反向代理。首次修改 Caddy 主配置前保留备份。
 
-- 应用目录：`/opt/society-lab`
-- systemd 服务：`society-lab`，非 root 账号运行，开机自启
-- API：仅监听 `127.0.0.1:8012`
-- Caddy 站点：`/etc/caddy/sites/society-lab.caddy`
+- 代码：`/opt/society-lab`
+- Python 3.12 与 uv：`/opt/society-lab-tools`
+- 服务：`society-lab`，非 root 运行、开机自启
+- API：`127.0.0.1:8012`
+- Caddy：`/etc/caddy/sites/society-lab.caddy`
+- 模型配置：`/var/lib/society-lab/.env`（服务账号私有，不进入 Git）
+- 新运行：`/var/lib/society-lab/runs`（更新代码时保留）
 - 日志：`journalctl -u society-lab -n 100 --no-pager`
 
-`SOCIETY_LAB_READ_ONLY=1` 同时关闭 API 模型配置与新建实验，并让页面展示 6 个真实 LLM 博弈与 12 个离线归档。API 不返回模型连接信息。Caddy 额外拒绝 POST、PUT、PATCH、DELETE。模型密钥不会从本机迁移到服务器。
+全功能开放，无管理员登录。首次部署不迁移本机模型密钥，在页面填写 API Key、API Base、Model 后保存即可新建实验。已有 6 个 LLM 博弈与 12 个离线归档始终可浏览，无需模型配置。
 
-展示服务无需安装 AgentSociety 的模型运行依赖。若需要恢复本地完整交互模式，按根目录 README 使用 `uv sync --frozen`，不设置 `SOCIETY_LAB_READ_ONLY`。不要在当前只读 Python 环境中直接启用模型执行。
+`StateDirectory` 提供独立可写状态目录，代码与依赖保持只读。后端可通过 `SOCIETY_LAB_ENV_FILE`、`SOCIETY_LAB_RUNS_DIR` 自定义状态路径；`SOCIETY_LAB_INCLUDE_ARCHIVE=1` 包含离线历史。仍可设置 `SOCIETY_LAB_READ_ONLY=1` 切换为只读模式。
 
-更新代码后再次执行上述命令。脚本要求服务器已安装 Git、curl、Node.js/npm、Caddy、systemd，并且域名指向该服务器。复用既有端口 80/443 的 Caddy，不占用其他应用后端端口。
+再次运行 bootstrap 更新代码与依赖，不覆盖已保存模型参数和新运行数据。服务器需已有 Git、curl、Node.js/npm、Caddy 和 systemd，域名指向该服务器。

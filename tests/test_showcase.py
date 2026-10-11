@@ -51,6 +51,17 @@ class ShowcaseTests(unittest.TestCase):
             self.assertEqual(self.client.get("/api/runs/" + "b" * 32).status_code, 404)
             self.assertFalse(self.client.get("/api/config").json()["read_only"])
 
+    def test_full_deployment_uses_private_state_and_bundled_examples(self):
+        state = self.root / "state"
+        state.mkdir()
+        with patch.dict(os.environ, {"SOCIETY_LAB_READ_ONLY": "0", "SOCIETY_LAB_INCLUDE_ARCHIVE": "1"}), patch.object(api, "RUNS", state / "runs"), patch.object(api, "ENV_FILE", state / ".env"):
+            response = self.client.post("/api/config", json={"api_key": "new-test-key", "api_base": "https://example.com/v1", "model": "test-model"})
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue(response.json()["env"]["api_key_configured"])
+            self.assertNotIn("new-test-key", response.text)
+            self.assertIn("new-test-key", (state / ".env").read_text())
+            self.assertEqual(len(self.client.get("/api/runs").json()), 2)
+
 
 if __name__ == "__main__":
     unittest.main()

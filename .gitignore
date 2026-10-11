@@ -35,3 +35,4 @@ frontend/dist/
 .DS_Store
 .idea/
 .vscode/
+.showcase-test-*/

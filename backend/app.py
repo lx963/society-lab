@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Literal
 
 from dotenv import dotenv_values, load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator, model_validator
 
@@ -16,6 +16,19 @@ from .runner import ENV_NAMES, RUNS, execute, llm_config  # noqa: E402
 
 app = FastAPI(title="AgentSociety2 博弈实验台")
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"], allow_methods=["GET", "POST"], allow_headers=["Content-Type"])
+
+
+def read_only() -> bool:
+    return os.getenv("SOCIETY_LAB_READ_ONLY", "").lower() in {"1", "true", "yes"}
+
+
+def require_writable():
+    if read_only():
+        raise HTTPException(status_code=403, detail="当前站点仅供展示，模型配置与新建实验已关闭。")
+
+
+def run_directories():
+    return [RUNS, ROOT / "examples" / "offline"] if read_only() else [RUNS]
 
 
 class Agent(BaseModel):
@@ -83,15 +96,19 @@ class EnvUpdate(BaseModel):
 
 @app.get("/api/config")
 def config():
+    if read_only():
+        return {"mode": "showcase", "read_only": True, "env": {
+            "api_key_configured": False, "api_base": "", "model": "",
+        }}
     values = dotenv_values(ENV_FILE) if ENV_FILE.exists() else {}
-    return {"mode": "llm", "env": {
+    return {"mode": "llm", "read_only": False, "env": {
         "api_key_configured": bool(values[ENV_NAMES[0]] if ENV_NAMES[0] in values else os.getenv(ENV_NAMES[0])),
         "api_base": (values[ENV_NAMES[1]] if ENV_NAMES[1] in values else os.getenv(ENV_NAMES[1])) or "",
         "model": (values[ENV_NAMES[2]] if ENV_NAMES[2] in values else os.getenv(ENV_NAMES[2])) or "",
     }}
 
 
-@app.post("/api/config")
+@app.post("/api/config", dependencies=[Depends(require_writable)])
 def save_config(payload: EnvUpdate):
     values = dict(dotenv_values(ENV_FILE)) if ENV_FILE.exists() else {}
     updates = {ENV_NAMES[0]: payload.api_key, ENV_NAMES[1]: payload.api_base, ENV_NAMES[2]: payload.model}
@@ -106,7 +123,7 @@ def save_config(payload: EnvUpdate):
     return config()
 
 
-@app.post("/api/runs")
+@app.post("/api/runs", dependencies=[Depends(require_writable)])
 async def run(payload: RunRequest):
     try:
         llm_config()
@@ -117,9 +134,7 @@ async def run(payload: RunRequest):
 
 @app.get("/api/runs")
 def list_runs():
-    if not RUNS.exists():
-        return []
-    files = sorted(RUNS.glob("*/result.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:30]
+    files = sorted((p for directory in run_directories() for p in directory.glob("*/result.json")), key=lambda x: x.stat().st_mtime, reverse=True)[:30]
     return [{"id": p.parent.name, "example": (r := json.loads(p.read_text(encoding="utf-8")))["example"], "created_at": r["created_at"], "status": r["status"]} for p in files]
 
 
@@ -127,7 +142,8 @@ def list_runs():
 def get_run(run_id: str):
     if len(run_id) != 32 or not all(c in "0123456789abcdef" for c in run_id):
         raise HTTPException(status_code=404, detail="运行不存在")
-    path = RUNS / run_id / "result.json"
-    if not path.exists():
-        raise HTTPException(status_code=404, detail="运行不存在")
-    return json.loads(path.read_text(encoding="utf-8"))
+    for directory in run_directories():
+        path = directory / run_id / "result.json"
+        if path.exists():
+            return json.loads(path.read_text(encoding="utf-8"))
+    raise HTTPException(status_code=404, detail="运行不存在")

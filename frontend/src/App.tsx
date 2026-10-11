@@ -211,9 +211,9 @@ function ConfigurationView({ form, setForm, name, setName, onChoose, onResults, 
   </section>
 }
 
-function ResultsView({ run, onConfigure }: { run: Run | null; onConfigure: () => void }) {
+function ResultsView({ run, onConfigure, readOnly = false }: { run: Run | null; onConfigure: () => void; readOnly?: boolean }) {
   return <section className="workspace-view results-view">
-    <div className="view-intro"><div><h1>实验结果</h1><p>按执行顺序查看模型决策、环境结算和输入快照。</p></div><button className="outline-button" onClick={onConfigure}>返回配置</button></div>
+    <div className="view-intro"><div><h1>实验结果</h1><p>按执行顺序查看模型决策、环境结算和输入快照。</p></div>{!readOnly && <button className="outline-button" onClick={onConfigure}>返回配置</button>}</div>
     {run ? <div className="result-shell">
       <div className="result-hero"><div><span className="result-label">当前记录</span><h2>{titles[run.example] || run.example}</h2><p>{new Date(run.created_at).toLocaleString('zh-CN')}　/　{run.id.slice(0, 8)}</p></div><span className={`completed-badge ${run.status === 'completed' ? 'completed' : 'failed'}`}>{run.status === 'completed' ? '已完成' : '未完成'}</span></div>
       {run.error && <div className="error" role="alert"><b>运行未完成</b><span>{run.error}</span></div>}
@@ -242,9 +242,20 @@ export default function App() {
   const [error, setError] = useState('')
   const [saved, setSaved] = useState(false)
   const [historyLoading, setHistoryLoading] = useState(false)
+  const [readOnly, setReadOnly] = useState(false)
+  const [configLoading, setConfigLoading] = useState(true)
 
   const refresh = () => api<RunSummary[]>('/api/runs').then(setHistory).catch(error => setError(errorMessage(error)))
-  useEffect(() => { refresh(); api<{ env: EnvState }>('/api/config').then(value => { setEnv(value.env); setSavedEnv(JSON.stringify(value.env)) }).catch(error => setError(errorMessage(error))) }, [])
+  useEffect(() => {
+    Promise.all([api<RunSummary[]>('/api/runs'), api<{ env: EnvState; read_only?: boolean }>('/api/config')]).then(async ([runs, value]) => {
+      setHistory(runs); setEnv(value.env); setSavedEnv(JSON.stringify(value.env)); setReadOnly(Boolean(value.read_only))
+      if (value.read_only && runs.length) {
+        setView('results'); setHistoryLoading(true)
+        const selected = runs.find(item => item.example === 'public_goods') || runs[0]
+        try { setRun(await api<Run>(`/api/runs/${selected.id}`)) } finally { setHistoryLoading(false) }
+      }
+    }).catch(error => setError(errorMessage(error))).finally(() => setConfigLoading(false))
+  }, [])
   const newExperiment = () => { setForm(createInitialForm()); setName('未命名实验'); setTab('basic'); setRun(null); setError(''); setSaved(false); setView('configuration') }
   const choose = (example: Example) => {
     setForm(current => ({ ...current, example, agents: resizeAgents(current, example === 'prisoners_dilemma' ? 2 : example === 'public_goods' ? 4 : 10) }))
@@ -271,6 +282,18 @@ export default function App() {
   const save = async () => { setBusy(true); setError(''); setSaved(false); try { const value = await api<{ env: EnvState }>('/api/config', { ...(keyValue ? { api_key: keyValue } : {}), api_base: env.api_base, model: env.model }); setEnv(value.env); setSavedEnv(JSON.stringify(value.env)); setKeyValue(''); setSaved(true) } catch (error) { setError(errorMessage(error)) } finally { setBusy(false) } }
   const openRun = async (id: string) => { setError(''); setRun(null); setHistoryLoading(true); setView('results'); try { setRun(await api<Run>(`/api/runs/${id}`)) } catch (error) { setError(errorMessage(error)) } finally { setHistoryLoading(false) } }
   const draftDirty = savedDraft !== JSON.stringify({ name, form })
+
+  if (configLoading) return <main className="loading-result panel" role="status">正在加载实验台…</main>
+  if (readOnly) return <div className="shell"><aside className="sidebar">
+    <div className="brand"><Icon name="network" className="logo"/><div><strong>社科试验台</strong><small>Social Science Simulation Lab</small></div></div>
+    <div className="side-label">成功实例 · {history.length} 个</div>
+    <nav className="history showcase-history" aria-label="成功实验记录">{history.map(item => <button key={item.id} className={run?.id === item.id ? 'active' : ''} onClick={() => openRun(item.id)}><span>{titles[item.example] || ({ hello_agent: 'Hello Agent', custom_env: '自定义环境', replay_system: '回放系统' } as Record<string, string>)[item.example] || item.example}<i className="run-dot success"/></span><small>{new Date(item.created_at).toLocaleString('zh-CN')} · {item.id.slice(0, 6)}</small></button>)}</nav>
+    <div className="side-foot"><span className="status-dot"/>公开展示 · 只读</div>
+  </aside><main><header className="workspace-header"><div className="breadcrumb"><h1>成功实例展示</h1></div><a className="outline-button" href="https://github.com/lx963/society-lab" target="_blank" rel="noreferrer">查看源码</a></header><div className="page">
+    <p className="basic-note">公开浏览已完成的真实 LLM 博弈与离线历史示例。模型配置和新建实验已关闭。</p>
+    {error && <div className="error global-error" role="alert">{error}</div>}
+    {historyLoading ? <div className="loading-result panel" role="status">正在加载实验记录…</div> : run ? <ResultsView run={run} readOnly onConfigure={() => {}}/> : <p role="status">暂无可展示的实验记录。</p>}
+  </div></main></div>
 
   return <div className="shell"><Sidebar view={view} form={form} name={name} busy={busy} run={run} history={history} onNew={newExperiment} onView={setView} onChoose={choose} onSettings={openSettings} onOpenRun={openRun}/><main><header className="workspace-header"><div className="breadcrumb"><h1>工作台</h1><span className="breadcrumb-divider"/><span>{view === 'configuration' ? name || '未命名实验' : '实验结果'}</span></div><div className="header-actions"><button className="outline-button" disabled={busy || view === 'results'} onClick={saveDraft}><Icon name="file"/>保存草稿</button><button className="primary-button" disabled={busy || view === 'results'} onClick={start}><Icon name="play"/>{busy ? '正在仿真…' : '运行仿真'}</button></div></header><div className="page"><div className="workspace-meta"><Icon name={view === 'configuration' ? 'file' : 'chart'}/><span>{view === 'configuration' ? '草稿' : '实验记录'}</span><span className="save-status" role="status">{view === 'configuration' ? draftSavedAt ? draftDirty ? '有未保存的修改' : `最近保存于 ${new Date(draftSavedAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}` : '尚未保存' : '查看决策与仿真结果'}</span><span className="online"><span className="status-dot"/>本地工作空间</span></div>{error && <div className="error global-error" role="alert"><b>操作未完成</b><span>{error}</span><button className="text-button" onClick={() => setError('')}>关闭提示</button></div>}{view === 'configuration' ? <fieldset className="workspace-controls" disabled={busy}><ConfigurationView form={form} setForm={setForm} name={name} setName={setName} onChoose={choose} onResults={() => setView('results')} tab={tab} setTab={setTab} env={env} keyValue={keyValue} setKeyValue={value => { setKeyValue(value); setSaved(false) }} setEnv={value => { setEnv(value); setSaved(false) }} busy={busy} saved={saved} onSave={save}/></fieldset> : historyLoading ? <div className="loading-result panel" role="status">正在加载实验记录…</div> : <ResultsView run={run} onConfigure={() => setView('configuration')}/>}</div></main></div>
 }

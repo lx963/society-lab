@@ -1,0 +1,17 @@
+society-lab.wei67.top {
+    encode zstd gzip
+    header X-Content-Type-Options nosniff
+    header Referrer-Policy strict-origin-when-cross-origin
+
+    @writes method POST PUT PATCH DELETE
+    respond @writes "This site is a read-only showcase." 403
+
+    handle /api/* {
+        reverse_proxy 127.0.0.1:8012
+    }
+    handle {
+        root * /opt/society-lab/frontend/dist
+        try_files {path} /index.html
+        file_server
+    }
+}

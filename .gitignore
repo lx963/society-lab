@@ -1,0 +1,37 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env
+.env.*
+!.env.example
+# Keep only the reviewed showcase runs; new local runs stay private by default.
+data/*
+!data/runs/
+data/runs/*
+!data/runs/8c2964df44c24a028a71ace95e0a0d9a/
+!data/runs/b8302e76d1ad4365a14065318ef2feee/
+!data/runs/bbbbbcd7c36744c5994b9b5472a03f1f/
+!data/runs/c00e94cadd3143619263c1c03143ce7f/
+!data/runs/d6ebfda464c44b21aeb3735f6df51791/
+!data/runs/eef6ab43e560457185ad7561aa634d4e/
+frontend/node_modules/
+frontend/dist/
+
+# Local tool state, logs, and editor caches
+.claude/
+.playwright-mcp/
+.serena/
+.spec-workflow/
+.statamcp/
+*.log
+**/replay/.*.lock
+.DS_Store
+.idea/
+.vscode/

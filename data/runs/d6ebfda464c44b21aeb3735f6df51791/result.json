@@ -1,0 +1,237 @@
+{
+  "id": "d6ebfda464c44b21aeb3735f6df51791",
+  "example": "public_goods",
+  "created_at": "2026-09-26T07:40:30.659946+00:00",
+  "mode": "llm",
+  "status": "completed",
+  "events": [
+    {
+      "step": 1,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Alice",
+        "action": "0",
+        "reason": "With a personal return of only 0.375 coins per coin contributed, contributing would reduce my own payoff in this round."
+      }
+    },
+    {
+      "step": 2,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Bob",
+        "action": "0",
+        "reason": "With a marginal return of 1.5/4 = 0.375 per contributed coin, contributing reduces my own payoff, so I choose 0 in this one-shot round."
+      }
+    },
+    {
+      "step": 3,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Charlie",
+        "action": "0",
+        "reason": "In round 1, each coin contributed returns only 0.375 coins to me through the shared pool, so contributing is not individually profitable without evidence that others will reciprocate."
+      }
+    },
+    {
+      "step": 4,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Diana",
+        "action": "0",
+        "reason": "With a 1.5 multiplier split among 4 players, each coin I contribute returns only 0.375 coins to me, so contributing is individually costly in this one-shot round."
+      }
+    },
+    {
+      "step": 5,
+      "action": "第 1 轮结果",
+      "result": {
+        "round": 1,
+        "total_contribution": 0,
+        "public_pool_gain": 0.0,
+        "contributions": {
+          "Alice": 0,
+          "Bob": 0,
+          "Charlie": 0,
+          "Diana": 0
+        },
+        "payoffs": {
+          "Alice": 100.0,
+          "Bob": 100.0,
+          "Charlie": 100.0,
+          "Diana": 100.0
+        }
+      }
+    },
+    {
+      "step": 6,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Alice",
+        "action": "20",
+        "reason": "I’ll contribute 20 coins to support the group while keeping 80 coins, especially since the previous round had no contributions."
+      }
+    },
+    {
+      "step": 7,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Bob",
+        "action": "0",
+        "reason": "With a 1.5x multiplier shared among 4 players, each coin contributed returns only 0.375 coins to me, and the previous round showed no cooperation, so I contribute 0."
+      }
+    },
+    {
+      "step": 8,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Charlie",
+        "action": "0",
+        "reason": "With a 1.5 multiplier split among 4 players, each coin contributed returns only 0.375 coins to me, so contributing lowers my payoff. Since everyone contributed 0 in the previous round, I will contribute 0."
+      }
+    },
+    {
+      "step": 9,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Diana",
+        "action": "0",
+        "reason": "With each contributed coin returning only 0.375 coins to me, contributing is individually costly; after everyone contributed zero last round, I will keep my 100 coins."
+      }
+    },
+    {
+      "step": 10,
+      "action": "第 2 轮结果",
+      "result": {
+        "round": 2,
+        "total_contribution": 20,
+        "public_pool_gain": 30.0,
+        "contributions": {
+          "Alice": 20,
+          "Bob": 0,
+          "Charlie": 0,
+          "Diana": 0
+        },
+        "payoffs": {
+          "Alice": 87.5,
+          "Bob": 107.5,
+          "Charlie": 107.5,
+          "Diana": 107.5
+        }
+      }
+    },
+    {
+      "step": 11,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Alice",
+        "action": "0",
+        "reason": "The public return per contributed coin is only 0.375 to me, and the other players contributed nothing last round, so contributing would likely benefit free riders at my expense."
+      }
+    },
+    {
+      "step": 12,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Bob",
+        "action": "0",
+        "reason": "With others contributing nothing in the previous round, contributing would give Bob only 0.375 coins back per coin invested while benefiting everyone equally, so I will avoid contributing this round."
+      }
+    },
+    {
+      "step": 13,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Charlie",
+        "action": "0",
+        "reason": "The previous round showed that Alice contributed 20 while the other players contributed nothing. Since each coin contributed returns only 0.375 coins to me, contributing would reduce my payoff absent reliable cooperation, so I will contribute 0."
+      }
+    },
+    {
+      "step": 14,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Diana",
+        "action": "0",
+        "reason": "Contributing costs 1 coin while returning only 0.375 coins to me through the shared pool, so with others contributing little, I will free-ride this round and keep my 100 coins."
+      }
+    },
+    {
+      "step": 15,
+      "action": "第 3 轮结果",
+      "result": {
+        "round": 3,
+        "total_contribution": 0,
+        "public_pool_gain": 0.0,
+        "contributions": {
+          "Alice": 0,
+          "Bob": 0,
+          "Charlie": 0,
+          "Diana": 0
+        },
+        "payoffs": {
+          "Alice": 100.0,
+          "Bob": 100.0,
+          "Charlie": 100.0,
+          "Diana": 100.0
+        }
+      }
+    }
+  ],
+  "inputs": {
+    "agents": [
+      {
+        "id": 1,
+        "name": "Alice",
+        "age": 28,
+        "personality": "friendly, curious",
+        "bio": "Loves hiking and reading."
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "age": 30,
+        "personality": "thoughtful",
+        "bio": "Interested in simulations."
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "age": 28,
+        "personality": "cautious",
+        "bio": ""
+      },
+      {
+        "id": 4,
+        "name": "Diana",
+        "age": 28,
+        "personality": "optimistic",
+        "bio": ""
+      }
+    ],
+    "environment": {
+      "rounds": 3,
+      "endowment": 100,
+      "contribution_factor": 1.5
+    },
+    "rules": {
+      "payoff_cc": 3,
+      "payoff_cd": 0,
+      "payoff_dc": 5,
+      "payoff_dd": 1,
+      "benefit": 5,
+      "cost": 1,
+      "norm_type": "stern_judging",
+      "seed": 42
+    },
+    "skills": []
+  },
+  "model": "gpt-5.6-luna",
+  "token_usage": {
+    "gpt-5.6-luna": {
+      "calls": 12,
+      "input": 2199,
+      "output": 1382,
+      "cached_input": 0
+    }
+  }
+}

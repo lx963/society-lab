@@ -1,0 +1,2 @@
+{"step": 26, "action": "捐赠互动", "result": "{\"donor_id\": 2, \"recipient_id\": 4, \"action\": \"cooperate\", \"cost\": 1, \"benefit\": 5, \"donor_new_reputation\": \"good\"}"}
+{"step": 68, "action": "Agent 结果", "result": "{\"agent\": \"Agent 6\", \"payoff\": {\"agent_id\": 5, \"payoff\": 12.0}, \"reputation\": {\"agent_id\": 5, \"reputation\": \"good\"}}"}

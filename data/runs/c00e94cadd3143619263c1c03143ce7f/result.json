@@ -1,0 +1,907 @@
+{
+  "id": "c00e94cadd3143619263c1c03143ce7f",
+  "example": "reputation_game",
+  "created_at": "2026-09-26T07:42:13.402388+00:00",
+  "mode": "llm",
+  "status": "completed",
+  "events": [
+    {
+      "step": 1,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Alice",
+        "action": "cooperate",
+        "reason": "Bob has a good reputation, and under stern judging, cooperating with him preserves my good reputation while providing a benefit of 5 at a cost of 1."
+      }
+    },
+    {
+      "step": 2,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 0,
+        "recipient_id": 1,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 3,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Bob",
+        "action": "defect",
+        "reason": "Under stern judging, defecting against a recipient with bad reputation is normatively appropriate and avoids the cooperation cost."
+      }
+    },
+    {
+      "step": 4,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 1,
+        "recipient_id": 2,
+        "action": "defect",
+        "cost": 0,
+        "benefit": 0,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 5,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Charlie",
+        "action": "cooperate",
+        "reason": "Diana is good, and under stern judging cooperation maintains a good reputation while providing her a benefit."
+      }
+    },
+    {
+      "step": 6,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 2,
+        "recipient_id": 3,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 7,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Diana",
+        "action": "cooperate",
+        "reason": "The recipient has a good reputation, and under stern judging, cooperation maintains my good standing while providing a substantial benefit."
+      }
+    },
+    {
+      "step": 8,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 3,
+        "recipient_id": 4,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 9,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 5",
+        "action": "cooperate",
+        "reason": "Cooperating with a recipient who has a good reputation is rewarded under stern judging and provides a net social benefit."
+      }
+    },
+    {
+      "step": 10,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 4,
+        "recipient_id": 5,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 11,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 6",
+        "action": "cooperate",
+        "reason": "Cooperating with a good recipient preserves my reputation under stern judging, supporting future benefits despite the immediate cost."
+      }
+    },
+    {
+      "step": 12,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 5,
+        "recipient_id": 6,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 13,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 7",
+        "action": "cooperate",
+        "reason": "The recipient has a good reputation, and under stern judging, cooperation preserves my reputation while providing a net social benefit."
+      }
+    },
+    {
+      "step": 14,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 6,
+        "recipient_id": 7,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 15,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 8",
+        "action": "defect",
+        "reason": "Under stern judging, defecting against a recipient with bad reputation is norm-compliant and avoids the cooperation cost."
+      }
+    },
+    {
+      "step": 16,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 7,
+        "recipient_id": 8,
+        "action": "defect",
+        "cost": 0,
+        "benefit": 0,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 17,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 9",
+        "action": "cooperate",
+        "reason": "Cooperating with a recipient of good reputation is rewarded under stern judging and provides them with a benefit of 5 at a cost of 1."
+      }
+    },
+    {
+      "step": 18,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 8,
+        "recipient_id": 9,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 19,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 10",
+        "action": "cooperate",
+        "reason": "Alice is good, and under stern judging cooperation preserves my favorable reputation while providing a net social benefit."
+      }
+    },
+    {
+      "step": 20,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 9,
+        "recipient_id": 0,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 21,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Alice",
+        "action": "cooperate",
+        "reason": "Charlie has a good reputation, and under stern judging cooperation is the normatively rewarded choice despite its cost."
+      }
+    },
+    {
+      "step": 22,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 0,
+        "recipient_id": 2,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 23,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Bob",
+        "action": "cooperate",
+        "reason": "Diana has a good reputation, and under stern judging, cooperating with her preserves my good standing while providing her a benefit."
+      }
+    },
+    {
+      "step": 24,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 1,
+        "recipient_id": 3,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 25,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Charlie",
+        "action": "cooperate",
+        "reason": "Under stern judging, cooperating with a good recipient preserves a good reputation and provides a benefit of 5 at a cost of 1."
+      }
+    },
+    {
+      "step": 26,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 2,
+        "recipient_id": 4,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 27,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Diana",
+        "action": "cooperate",
+        "reason": "Recipient has a good reputation, and under stern judging, cooperating with them preserves my good reputation while providing a benefit."
+      }
+    },
+    {
+      "step": 28,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 3,
+        "recipient_id": 5,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 29,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 5",
+        "action": "cooperate",
+        "reason": "Cooperating benefits the good-reputation recipient substantially, and stern judging rewards cooperation with good recipients."
+      }
+    },
+    {
+      "step": 30,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 4,
+        "recipient_id": 6,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 31,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 6",
+        "action": "cooperate",
+        "reason": "Cooperating with a good recipient under stern judging preserves my reputation and benefits the recipient, making it the strategically safer choice despite the cost."
+      }
+    },
+    {
+      "step": 32,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 5,
+        "recipient_id": 7,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 33,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 7",
+        "action": "cooperate",
+        "reason": "Cooperating with a good recipient is approved under stern judging and preserves my reputation while providing a benefit."
+      }
+    },
+    {
+      "step": 34,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 6,
+        "recipient_id": 8,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 35,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 8",
+        "action": "cooperate",
+        "reason": "Recipient has a good reputation, and under stern judging cooperation preserves my good standing while providing a valuable benefit."
+      }
+    },
+    {
+      "step": 36,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 7,
+        "recipient_id": 9,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 37,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 9",
+        "action": "cooperate",
+        "reason": "Alice has a good reputation, and cooperating benefits her while preserving my standing under stern judging."
+      }
+    },
+    {
+      "step": 38,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 8,
+        "recipient_id": 0,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 39,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 10",
+        "action": "cooperate",
+        "reason": "Bob is good, so under stern judging cooperation preserves my favorable reputation while providing him 5 at a cost of 1."
+      }
+    },
+    {
+      "step": 40,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 9,
+        "recipient_id": 1,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 41,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Alice",
+        "action": "cooperate",
+        "reason": "Diana has a good reputation, and under stern judging, cooperating with her preserves my good reputation while providing her 5 at a cost of 1."
+      }
+    },
+    {
+      "step": 42,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 0,
+        "recipient_id": 3,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 43,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Bob",
+        "action": "cooperate",
+        "reason": "The recipient has a good reputation, and under stern judging, cooperating with them preserves my good standing while providing a substantial benefit."
+      }
+    },
+    {
+      "step": 44,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 1,
+        "recipient_id": 4,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 45,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Charlie",
+        "action": "cooperate",
+        "reason": "The recipient has a good reputation, so stern judging favors cooperation; the benefit of 5 outweighs the cost of 1."
+      }
+    },
+    {
+      "step": 46,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 2,
+        "recipient_id": 5,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 47,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Diana",
+        "action": "cooperate",
+        "reason": "Cooperating with a good recipient follows the stern-judging norm and provides a net social benefit."
+      }
+    },
+    {
+      "step": 48,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 3,
+        "recipient_id": 6,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 49,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 5",
+        "action": "cooperate",
+        "reason": "Cooperating with a good-reputation recipient is rewarded under stern judging and provides a net social benefit of 4."
+      }
+    },
+    {
+      "step": 50,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 4,
+        "recipient_id": 7,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 51,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 6",
+        "action": "cooperate",
+        "reason": "Cooperating with a good recipient preserves my good reputation under stern judging, while the cost is only 1 for a benefit of 5 to the recipient."
+      }
+    },
+    {
+      "step": 52,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 5,
+        "recipient_id": 8,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 53,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 7",
+        "action": "cooperate",
+        "reason": "The recipient has a good reputation, so stern judging favors cooperation; the recipient gains 5 at a cost of 1 to me."
+      }
+    },
+    {
+      "step": 54,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 6,
+        "recipient_id": 9,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 55,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 8",
+        "action": "cooperate",
+        "reason": "Alice has good reputation, and under stern judging, cooperating with a good recipient preserves a good reputation while providing them 5 at a cost of 1."
+      }
+    },
+    {
+      "step": 56,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 7,
+        "recipient_id": 0,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 57,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 9",
+        "action": "cooperate",
+        "reason": "Bob has a good reputation, and under stern judging cooperation is the normatively appropriate action; it also benefits him substantially."
+      }
+    },
+    {
+      "step": 58,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 8,
+        "recipient_id": 1,
+        "action": "cooperate",
+        "cost": 1,
+        "benefit": 5,
+        "donor_new_reputation": "good"
+      }
+    },
+    {
+      "step": 59,
+      "action": "LLM 决策",
+      "result": {
+        "agent": "Agent 10",
+        "action": "defect",
+        "reason": "Defection avoids the cost of cooperation; although it harms my reputation under stern judging when targeting a good recipient, no future reputation payoff is specified."
+      }
+    },
+    {
+      "step": 60,
+      "action": "捐赠互动",
+      "result": {
+        "donor_id": 9,
+        "recipient_id": 2,
+        "action": "defect",
+        "cost": 0,
+        "benefit": 0,
+        "donor_new_reputation": "bad"
+      }
+    },
+    {
+      "step": 61,
+      "action": "全局统计",
+      "result": {
+        "total_interactions": 30,
+        "cooperation_count": 27,
+        "defection_count": 3,
+        "cooperation_rate": 0.9
+      }
+    },
+    {
+      "step": 62,
+      "action": "声誉分布",
+      "result": {
+        "good_count": 9,
+        "bad_count": 1,
+        "good_ratio": 0.9
+      }
+    },
+    {
+      "step": 63,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Alice",
+        "payoff": {
+          "agent_id": 0,
+          "payoff": 12.0
+        },
+        "reputation": {
+          "agent_id": 0,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 64,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Bob",
+        "payoff": {
+          "agent_id": 1,
+          "payoff": 13.0
+        },
+        "reputation": {
+          "agent_id": 1,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 65,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Charlie",
+        "payoff": {
+          "agent_id": 2,
+          "payoff": 2.0
+        },
+        "reputation": {
+          "agent_id": 2,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 66,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Diana",
+        "payoff": {
+          "agent_id": 3,
+          "payoff": 12.0
+        },
+        "reputation": {
+          "agent_id": 3,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 67,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Agent 5",
+        "payoff": {
+          "agent_id": 4,
+          "payoff": 12.0
+        },
+        "reputation": {
+          "agent_id": 4,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 68,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Agent 6",
+        "payoff": {
+          "agent_id": 5,
+          "payoff": 12.0
+        },
+        "reputation": {
+          "agent_id": 5,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 69,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Agent 7",
+        "payoff": {
+          "agent_id": 6,
+          "payoff": 12.0
+        },
+        "reputation": {
+          "agent_id": 6,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 70,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Agent 8",
+        "payoff": {
+          "agent_id": 7,
+          "payoff": 13.0
+        },
+        "reputation": {
+          "agent_id": 7,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 71,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Agent 9",
+        "payoff": {
+          "agent_id": 8,
+          "payoff": 7.0
+        },
+        "reputation": {
+          "agent_id": 8,
+          "reputation": "good"
+        }
+      }
+    },
+    {
+      "step": 72,
+      "action": "Agent 结果",
+      "result": {
+        "agent": "Agent 10",
+        "payoff": {
+          "agent_id": 9,
+          "payoff": 13.0
+        },
+        "reputation": {
+          "agent_id": 9,
+          "reputation": "bad"
+        }
+      }
+    }
+  ],
+  "inputs": {
+    "agents": [
+      {
+        "id": 1,
+        "name": "Alice",
+        "age": 28,
+        "personality": "friendly, curious",
+        "bio": "Loves hiking and reading."
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "age": 30,
+        "personality": "thoughtful",
+        "bio": "Interested in simulations."
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "age": 28,
+        "personality": "cautious",
+        "bio": ""
+      },
+      {
+        "id": 4,
+        "name": "Diana",
+        "age": 28,
+        "personality": "optimistic",
+        "bio": ""
+      },
+      {
+        "id": 5,
+        "name": "Agent 5",
+        "age": 28,
+        "personality": "altruistic",
+        "bio": ""
+      },
+      {
+        "id": 6,
+        "name": "Agent 6",
+        "age": 28,
+        "personality": "self-interested",
+        "bio": ""
+      },
+      {
+        "id": 7,
+        "name": "Agent 7",
+        "age": 28,
+        "personality": "cautious",
+        "bio": ""
+      },
+      {
+        "id": 8,
+        "name": "Agent 8",
+        "age": 28,
+        "personality": "optimistic",
+        "bio": ""
+      },
+      {
+        "id": 9,
+        "name": "Agent 9",
+        "age": 28,
+        "personality": "altruistic",
+        "bio": ""
+      },
+      {
+        "id": 10,
+        "name": "Agent 10",
+        "age": 28,
+        "personality": "self-interested",
+        "bio": ""
+      }
+    ],
+    "environment": {
+      "rounds": 3,
+      "endowment": 100,
+      "contribution_factor": 1.5
+    },
+    "rules": {
+      "payoff_cc": 3,
+      "payoff_cd": 0,
+      "payoff_dc": 5,
+      "payoff_dd": 1,
+      "benefit": 5,
+      "cost": 1,
+      "norm_type": "stern_judging",
+      "seed": 42
+    },
+    "skills": []
+  },
+  "model": "gpt-5.6-luna",
+  "token_usage": {
+    "gpt-5.6-luna": {
+      "calls": 30,
+      "input": 2907,
+      "output": 2722,
+      "cached_input": 0
+    }
+  }
+}

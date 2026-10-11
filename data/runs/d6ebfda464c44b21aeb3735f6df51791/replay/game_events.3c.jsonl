@@ -1,0 +1,1 @@
+{"step": 4, "action": "LLM 决策", "result": "{\"agent\": \"Diana\", \"action\": \"0\", \"reason\": \"With a 1.5 multiplier split among 4 players, each coin I contribute returns only 0.375 coins to me, so contributing is individually costly in this one-shot round.\"}"}

@@ -1,0 +1,2 @@
+{"step": 19, "action": "LLM 决策", "result": "{\"agent\": \"Agent 10\", \"action\": \"cooperate\", \"reason\": \"Alice is good, and under stern judging cooperation preserves my favorable reputation while providing a net social benefit.\"}"}
+{"step": 20, "action": "捐赠互动", "result": "{\"donor_id\": 9, \"recipient_id\": 0, \"action\": \"cooperate\", \"cost\": 1, \"benefit\": 5, \"donor_new_reputation\": \"good\"}"}

@@ -1,0 +1,1 @@
+{"step": 15, "action": "LLM 决策", "result": "{\"agent\": \"Agent 8\", \"action\": \"defect\", \"reason\": \"Under stern judging, defecting against a recipient with bad reputation is norm-compliant and avoids the cooperation cost.\"}"}

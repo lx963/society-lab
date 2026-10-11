@@ -1,0 +1,1 @@
+{"step": 3, "action": "LLM 决策", "result": "{\"agent\": \"Bob\", \"action\": \"cooperate\", \"reason\": \"Cooperation offers a strong mutual payoff of 3, and without information suggesting the other player will defect, I favor the mutually beneficial outcome.\"}"}

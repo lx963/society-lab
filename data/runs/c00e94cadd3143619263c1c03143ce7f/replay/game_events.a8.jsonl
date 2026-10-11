@@ -1,0 +1,2 @@
+{"step": 45, "action": "LLM 决策", "result": "{\"agent\": \"Charlie\", \"action\": \"cooperate\", \"reason\": \"The recipient has a good reputation, so stern judging favors cooperation; the benefit of 5 outweighs the cost of 1.\"}"}
+{"step": 63, "action": "Agent 结果", "result": "{\"agent\": \"Alice\", \"payoff\": {\"agent_id\": 0, \"payoff\": 12.0}, \"reputation\": {\"agent_id\": 0, \"reputation\": \"good\"}}"}

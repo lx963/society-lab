@@ -1,0 +1,32 @@
+:root {
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Segoe UI', sans-serif;
+  color: #303744;
+  background: #f5f7fb;
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --canvas: #f5f7fb;
+  --surface: #ffffff;
+  --surface-muted: #f7f9fd;
+  --ink: #303744;
+  --ink-muted: #687180;
+  --ink-faint: #697587;
+  --line: #e9edf3;
+  --accent: #1766ed;
+  --accent-soft: #eef4ff;
+  --success: #2ba683;
+  --danger: #bf5353;
+  --danger-soft: #fff5f4;
+}
+* { box-sizing: border-box; }
+html { min-width: 320px; min-height: 100%; }
+body { min-width: 320px; min-height: 100vh; margin: 0; background: var(--canvas); }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { color: #164dae; background: #dbeaff; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

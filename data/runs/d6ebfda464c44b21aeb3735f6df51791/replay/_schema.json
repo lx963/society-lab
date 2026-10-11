@@ -1,0 +1,339 @@
+{
+  "tables": {
+    "game_events": {
+      "columns": [
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "action",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "result",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ],
+      "primary_key": [],
+      "indexes": []
+    },
+    "public_goods_env_state": {
+      "columns": [
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation step for this environment snapshot row.",
+          "logical_type": "step",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "t",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation timestamp for this environment snapshot row.",
+          "logical_type": "timestamp",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "round_number",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "last_round",
+          "type": "JSON",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "pending_contributions",
+          "type": "JSON",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "submitted_agents",
+          "type": "JSON",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "num_agents",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "initial_endowment",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "public_pool_multiplier",
+          "type": "REAL",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ],
+      "primary_key": [
+        "step"
+      ],
+      "indexes": [
+        [
+          "t"
+        ]
+      ]
+    }
+  },
+  "datasets": {
+    "public_goods.env_state": {
+      "dataset_id": "public_goods.env_state",
+      "table_name": "public_goods_env_state",
+      "module_name": "PublicGoodsEnv",
+      "kind": "env_snapshot",
+      "title": "PublicGoodsEnv Environment State",
+      "description": "Per-step environment snapshots exported by PublicGoodsEnv.",
+      "entity_key": null,
+      "step_key": "step",
+      "time_key": "t",
+      "default_order": [
+        "step"
+      ],
+      "capabilities": [
+        "env_snapshot",
+        "timeseries"
+      ],
+      "version": 1,
+      "columns": [
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation step for this environment snapshot row.",
+          "logical_type": "step",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "t",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation timestamp for this environment snapshot row.",
+          "logical_type": "timestamp",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "round_number",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "last_round",
+          "type": "JSON",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "pending_contributions",
+          "type": "JSON",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "submitted_agents",
+          "type": "JSON",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "num_agents",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "initial_endowment",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "public_pool_multiplier",
+          "type": "REAL",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,2 @@
+{"step": 1, "action": "LLM 决策", "result": "{\"agent\": \"Alice\", \"action\": \"0\", \"reason\": \"With a personal return of only 0.375 coins per coin contributed, contributing would reduce my own payoff in this round.\"}"}
+{"step": 9, "action": "LLM 决策", "result": "{\"agent\": \"Diana\", \"action\": \"0\", \"reason\": \"With each contributed coin returning only 0.375 coins to me, contributing is individually costly; after everyone contributed zero last round, I will keep my 100 coins.\"}"}

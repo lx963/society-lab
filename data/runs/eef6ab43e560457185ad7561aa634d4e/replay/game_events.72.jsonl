@@ -1,0 +1,1 @@
+{"step": 3, "action": "LLM 决策", "result": "{\"agent\": \"Bob\", \"action\": \"defect\", \"reason\": \"Defection is the safer choice without knowing the other player's move: it yields 5 against cooperation and 1 against defection, compared with 3 or 0 for cooperating.\"}"}

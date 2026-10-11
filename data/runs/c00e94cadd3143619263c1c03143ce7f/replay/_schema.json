@@ -1,0 +1,657 @@
+{
+  "tables": {
+    "game_events": {
+      "columns": [
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "action",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "result",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ],
+      "primary_key": [],
+      "indexes": []
+    },
+    "reputation_game_agent_state": {
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Agent identifier for this snapshot row.",
+          "logical_type": "identifier",
+          "analysis_role": "identifier",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation step for this snapshot row.",
+          "logical_type": "step",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "t",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation timestamp for this snapshot row.",
+          "logical_type": "timestamp",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "reputation",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "payoff",
+          "type": "REAL",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ],
+      "primary_key": [
+        "agent_id",
+        "step"
+      ],
+      "indexes": [
+        [
+          "step"
+        ],
+        [
+          "t"
+        ]
+      ]
+    },
+    "reputation_game_env_state": {
+      "columns": [
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation step for this environment snapshot row.",
+          "logical_type": "step",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "t",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation timestamp for this environment snapshot row.",
+          "logical_type": "timestamp",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "total_interactions",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "cooperation_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "defection_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "cooperation_rate",
+          "type": "REAL",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "good_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "bad_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "good_ratio",
+          "type": "REAL",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "latest_action",
+          "type": "JSON",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "norm_type",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "benefit",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "cost",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "population_size",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ],
+      "primary_key": [
+        "step"
+      ],
+      "indexes": [
+        [
+          "t"
+        ]
+      ]
+    }
+  },
+  "datasets": {
+    "reputation_game.agent_state": {
+      "dataset_id": "reputation_game.agent_state",
+      "table_name": "reputation_game_agent_state",
+      "module_name": "ReputationGameEnv",
+      "kind": "entity_snapshot",
+      "title": "ReputationGameEnv Agent State",
+      "description": "Per-agent replay snapshots exported by ReputationGameEnv.",
+      "entity_key": "agent_id",
+      "step_key": "step",
+      "time_key": "t",
+      "default_order": [
+        "step",
+        "agent_id"
+      ],
+      "capabilities": [
+        "agent_snapshot",
+        "timeseries"
+      ],
+      "version": 1,
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Agent identifier for this snapshot row.",
+          "logical_type": "identifier",
+          "analysis_role": "identifier",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation step for this snapshot row.",
+          "logical_type": "step",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "t",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation timestamp for this snapshot row.",
+          "logical_type": "timestamp",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "reputation",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "payoff",
+          "type": "REAL",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ]
+    },
+    "reputation_game.env_state": {
+      "dataset_id": "reputation_game.env_state",
+      "table_name": "reputation_game_env_state",
+      "module_name": "ReputationGameEnv",
+      "kind": "env_snapshot",
+      "title": "ReputationGameEnv Environment State",
+      "description": "Per-step environment snapshots exported by ReputationGameEnv.",
+      "entity_key": null,
+      "step_key": "step",
+      "time_key": "t",
+      "default_order": [
+        "step"
+      ],
+      "capabilities": [
+        "env_snapshot",
+        "timeseries"
+      ],
+      "version": 1,
+      "columns": [
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation step for this environment snapshot row.",
+          "logical_type": "step",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "t",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": "Simulation timestamp for this environment snapshot row.",
+          "logical_type": "timestamp",
+          "analysis_role": "timestamp",
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "total_interactions",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "cooperation_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "defection_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "cooperation_rate",
+          "type": "REAL",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "good_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "bad_count",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "good_ratio",
+          "type": "REAL",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "latest_action",
+          "type": "JSON",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "norm_type",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "benefit",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "cost",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "population_size",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ]
+    }
+  }
+}

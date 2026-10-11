@@ -1,0 +1,1 @@
+{"step": 49, "action": "LLM 决策", "result": "{\"agent\": \"Agent 5\", \"action\": \"cooperate\", \"reason\": \"Cooperating with a good-reputation recipient is rewarded under stern judging and provides a net social benefit of 4.\"}"}

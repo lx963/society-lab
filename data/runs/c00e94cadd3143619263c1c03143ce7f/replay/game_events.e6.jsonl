@@ -1,0 +1,1 @@
+{"step": 65, "action": "Agent 结果", "result": "{\"agent\": \"Charlie\", \"payoff\": {\"agent_id\": 2, \"payoff\": 2.0}, \"reputation\": {\"agent_id\": 2, \"reputation\": \"good\"}}"}

@@ -1,0 +1,1 @@
+{"step": 25, "action": "LLM 决策", "result": "{\"agent\": \"Charlie\", \"action\": \"cooperate\", \"reason\": \"Under stern judging, cooperating with a good recipient preserves a good reputation and provides a benefit of 5 at a cost of 1.\"}"}

@@ -1,0 +1,1 @@
+{"step": 12, "action": "LLM 决策", "result": "{\"agent\": \"Bob\", \"action\": \"0\", \"reason\": \"With others contributing nothing in the previous round, contributing would give Bob only 0.375 coins back per coin invested while benefiting everyone equally, so I will avoid contributing this round.\"}"}

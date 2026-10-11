@@ -1,0 +1,66 @@
+{
+  "tables": {
+    "offline_events": {
+      "columns": [
+        {
+          "name": "step",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "agent_id",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "action",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        },
+        {
+          "name": "observation",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "title": null,
+          "description": null,
+          "logical_type": null,
+          "analysis_role": null,
+          "unit": null,
+          "enum_values": null,
+          "example": null,
+          "tags": []
+        }
+      ],
+      "primary_key": [],
+      "indexes": []
+    }
+  }
+}

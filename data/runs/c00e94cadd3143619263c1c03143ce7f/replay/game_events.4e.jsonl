@@ -1,0 +1,2 @@
+{"step": 37, "action": "LLM 决策", "result": "{\"agent\": \"Agent 9\", \"action\": \"cooperate\", \"reason\": \"Alice has a good reputation, and cooperating benefits her while preserving my standing under stern judging.\"}"}
+{"step": 67, "action": "Agent 结果", "result": "{\"agent\": \"Agent 5\", \"payoff\": {\"agent_id\": 4, \"payoff\": 12.0}, \"reputation\": {\"agent_id\": 4, \"reputation\": \"good\"}}"}

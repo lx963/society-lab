@@ -1,0 +1,1 @@
+{"step": 4, "action": "博弈结果", "result": "[{\"round\": 1, \"agent_a_name\": \"Alice\", \"agent_a_action\": \"No\", \"agent_b_name\": \"Bob\", \"agent_b_action\": \"No\", \"agent_a_payoff\": 1, \"agent_b_payoff\": 1}]"}

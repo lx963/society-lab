@@ -1,0 +1,1 @@
+{"step": 10, "action": "第 2 轮结果", "result": "{\"round\": 2, \"total_contribution\": 20, \"public_pool_gain\": 30.0, \"contributions\": {\"Alice\": 20, \"Bob\": 0, \"Charlie\": 0, \"Diana\": 0}, \"payoffs\": {\"Alice\": 87.5, \"Bob\": 107.5, \"Charlie\": 107.5, \"Diana\": 107.5}}"}

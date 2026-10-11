@@ -1,0 +1,15 @@
+[project]
+name = "society-lab"
+version = "0.1.0"
+description = "AgentSociety2 LLM games lab with FastAPI and React"
+readme = "README.md"
+authors = [
+    { name = "Codex", email = "codex@openai.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "agentsociety2==2.9.3",
+    "fastapi>=0.141.1",
+    "python-dotenv>=1.2.3",
+    "uvicorn>=0.54.0",
+]

@@ -12,7 +12,9 @@ if [ ! -x /opt/society-lab-tools/uv ]; then
 fi
 cd "$APP"
 export UV_PYTHON_INSTALL_DIR=/opt/society-lab-tools/python
-/opt/society-lab-tools/uv venv --python 3.12 --clear .venv
+if [ ! -x .venv/bin/python ] || ! readlink -f .venv/bin/python | grep -q '^/opt/society-lab-tools/python/'; then
+    /opt/society-lab-tools/uv venv --python 3.12 --clear .venv
+fi
 /opt/society-lab-tools/uv pip install --python .venv/bin/python -r deploy/requirements-showcase.txt
 cd frontend
 npm ci --no-audit --no-fund

@@ -134,8 +134,8 @@ async def run(payload: RunRequest):
 
 @app.get("/api/runs")
 def list_runs():
-    files = sorted((p for directory in run_directories() for p in directory.glob("*/result.json")), key=lambda x: x.stat().st_mtime, reverse=True)[:30]
-    return [{"id": p.parent.name, "example": (r := json.loads(p.read_text(encoding="utf-8")))["example"], "created_at": r["created_at"], "status": r["status"]} for p in files]
+    records = [{"id": p.parent.name, "example": (r := json.loads(p.read_text(encoding="utf-8")))["example"], "created_at": r["created_at"], "status": r["status"]} for directory in run_directories() for p in directory.glob("*/result.json")]
+    return sorted(records, key=lambda record: record["created_at"], reverse=True)[:30]
 
 
 @app.get("/api/runs/{run_id}")

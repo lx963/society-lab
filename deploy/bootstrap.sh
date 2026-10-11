@@ -11,7 +11,8 @@ if [ ! -x /opt/society-lab-tools/uv ]; then
     UV_INSTALL_DIR=/opt/society-lab-tools UV_NO_MODIFY_PATH=1 sh /tmp/society-lab-uv-install.sh
 fi
 cd "$APP"
-/opt/society-lab-tools/uv venv --python 3.12 .venv
+export UV_PYTHON_INSTALL_DIR=/opt/society-lab-tools/python
+/opt/society-lab-tools/uv venv --python 3.12 --clear .venv
 /opt/society-lab-tools/uv pip install --python .venv/bin/python -r deploy/requirements-showcase.txt
 cd frontend
 npm ci --no-audit --no-fund
